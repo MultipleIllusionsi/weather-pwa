@@ -19,11 +19,9 @@
   <meta name="description" content="A sample weather app">
 
   <meta name="theme-color" content="#2F3BA2" />
-
 </head>
 
 <body>
-
   <header class="header">
     <h1>
       Weather PWA
@@ -33,7 +31,6 @@
   </header>
 
   <main class="main">
-
     <button id="butAdd" class="fab" aria-label="Add">
       <span class="icon add"></span>
     </button>
@@ -182,11 +179,18 @@
 
   <script src="/scripts/luxon-1.11.4.js"></script>
   <script src="/scripts/app.js"></script>
-  <!-- CODELAB: Add the install script here -->
-  <script>
-    // CODELAB: Register service worker.
-  </script>
 
+  <script>
+    // Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((reg) => {
+            console.log('Service worker registered.', reg);
+          });
+      });
+    }
+  </script>
 </body>
 
 </html>
